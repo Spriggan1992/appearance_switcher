@@ -16,8 +16,3 @@ class LocalizationSwitcherProvider
         .notifier!;
   }
 }
-
-extension LocalizationSwitcherX on BuildContext {
-  LocalizationSwitcher get themeSwitcher =>
-      LocalizationSwitcherProvider.of(this)!;
-}
