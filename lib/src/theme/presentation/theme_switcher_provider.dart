@@ -14,7 +14,3 @@ class ThemeSwitcherProvider extends InheritedNotifier<ThemeSwitcher> {
         .notifier!;
   }
 }
-
-extension ThemeSwitcherX on BuildContext {
-  ThemeSwitcher get themeSwitcher => ThemeSwitcherProvider.of(this)!;
-}
