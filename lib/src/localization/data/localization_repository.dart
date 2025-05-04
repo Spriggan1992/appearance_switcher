@@ -12,7 +12,7 @@ final class LocalizationRepository implements ILocalizationRepository {
   Locale? getLocalization() {
     final result = _localStorage.getStringList(_key) ?? [];
 
-    if (result.isEmpty) {
+    if (result.isNotEmpty) {
       return Locale(result.first, result.last);
     }
 
