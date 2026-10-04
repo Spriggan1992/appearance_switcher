@@ -5,20 +5,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 final class ThemeRepository implements IThemeRepository {
   final SharedPreferences _localStorage;
 
+  /// Theme until the user picks one, e.g. on the first launch.
+  final ThemeMode defaultTheme;
+
   String get _key => 'theme';
 
-  const ThemeRepository(this._localStorage);
+  const ThemeRepository(
+    this._localStorage, {
+    this.defaultTheme = ThemeMode.light,
+  });
+
   @override
   ThemeMode getTheme() {
     final result = _localStorage.getString(_key);
 
-    if (result == null) {
-      return ThemeMode.light;
-    }
-
     return ThemeMode.values.firstWhere(
       (element) => element.toString() == result,
-      orElse: () => ThemeMode.light,
+      orElse: () => defaultTheme,
     );
   }
 
